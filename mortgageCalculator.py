@@ -1,4 +1,3 @@
-from __future__ import print_function
 import numpy as np
 import matplotlib.pyplot as plt
 import argparse
@@ -10,7 +9,7 @@ def main():
     parser = argparse.ArgumentParser(description='Calculates the mortage payments on loan with principle extra payments')
     parser.add_argument('--price', help='House price', type=float, nargs=1)
     parser.add_argument('--downPayment', help='Down payment amount', type=float, nargs=1)
-    parser.add_argument('--interest', help='Annual interest rate [%]', type=float, nargs=1)
+    parser.add_argument('--interest', help='Annual interest [%%]', type=float, nargs=1)
     parser.add_argument('--term', help='Loan term [yrs]', type=float, nargs=1)
     parser.add_argument('--extra', help='Monthly principle extra', type=float, nargs=1)
     args = parser.parse_args()
@@ -31,7 +30,7 @@ def main():
     cumulativeSum = payment.cumulative
 
     print("")
-    print("Home Price: ${:,.0f}    Down Payment: ${:,.0f}".format(args.price[0],args.downPayment[0]))
+    print("Home Price: ${:,.0f}    Down Payment: ${:,.0f} ({:.0f}%)".format(args.price[0],args.downPayment[0],args.downPayment[0]/args.price[0]*100.0))
     print("Principle:              ${:,.0f}".format(args.price[0]-args.downPayment[0]))
     print("Monthly Payment:        ${:,.0f}".format(monthlyPayment))
     print("Cumulative Sum:         ${:,.0f}".format(cumulativeSum))
@@ -43,7 +42,7 @@ def main():
 
         print("")
         print("With Monthly Payment of ${:,.0f},".format(monthlyPayment+args.extra[0]))
-        print("Paid off Loan in {:.0f} months".format(finished))
+        print("Paid off Loan in {:.0f} months [{:.0f} years, {:.0f} months]".format(finished, int(finished/12), finished % 12))
         print("              vs {:.0f} months".format(args.term[0]*12))
         print("Saving: ${:,.0f}".format(cumulativeSum - int(monthlyPayment+args.extra[0])*finished))
         print("")
