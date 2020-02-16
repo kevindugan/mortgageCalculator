@@ -30,10 +30,10 @@ def main():
     cumulativeSum = payment.cumulative
 
     print("")
-    print("Home Price: ${:,.0f}    Down Payment: ${:,.0f} ({:.0f}%)".format(args.price[0],args.downPayment[0],args.downPayment[0]/args.price[0]*100.0))
-    print("Principle:              ${:,.0f}".format(args.price[0]-args.downPayment[0]))
-    print("Monthly Payment:        ${:,.0f}".format(monthlyPayment))
-    print("Cumulative Sum:         ${:,.0f}".format(cumulativeSum))
+    print("Home Price: ${:,.0f}       Down Payment: ${:,.0f} ({:.0f}%)".format(args.price[0],args.downPayment[0],args.downPayment[0]/args.price[0]*100.0))
+    print("Principle:                 ${:,.0f}".format(args.price[0]-args.downPayment[0]))
+    print("Monthly Payment:           ${:,.0f}".format(monthlyPayment))
+    print("Cumulative Sum: ${:,.0f}   Interest Paid: ${:,.0f}".format(cumulativeSum, cumulativeSum-args.price[0]))
     print("")
 
     # Calculate payment history with extra principle contribution
