@@ -16,13 +16,13 @@ def main():
 
     # Default values
     if args.price is None:
-        args.price = [250000.0]
+        args.price = [200000.0]
     if args.downPayment is None:
-        args.downPayment = [50000.0]
+        args.downPayment = [30000.0]
     if args.interest is None:
-        args.interest = [3.625]
+        args.interest = [3.000]
     if args.term is None:
-        args.term = [10.0]
+        args.term = [15.0]
 
     # Calclate monthly payment and total contribution over term
     payment = calculateMonthlyPayment(price=args.price[0], downPayment=args.downPayment[0], annualInterest=args.interest[0], loanTerm=args.term[0])
@@ -33,7 +33,7 @@ def main():
     print("Home Price: ${:,.0f}       Down Payment: ${:,.0f} ({:.0f}%)".format(args.price[0],args.downPayment[0],args.downPayment[0]/args.price[0]*100.0))
     print("Principle:                 ${:,.0f}".format(args.price[0]-args.downPayment[0]))
     print("Monthly Payment:           ${:,.0f}".format(monthlyPayment))
-    print("Cumulative Sum: ${:,.0f}   Interest Paid: ${:,.0f}".format(cumulativeSum, cumulativeSum-args.price[0]))
+    print("Cumulative Sum: ${:,.0f}   Interest Paid: ${:,.0f}".format(cumulativeSum, cumulativeSum-(args.price[0]-args.downPayment[0])))
     print("")
 
     # Calculate payment history with extra principle contribution
