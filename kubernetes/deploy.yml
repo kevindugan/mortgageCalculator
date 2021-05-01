@@ -5,6 +5,8 @@ metadata:
   labels:
     app: mortgage-calculator
 spec:
+  imagePullSecrets:
+  - name: dugan-docker-registry
   replicas: 1
   selector:
     matchLabels:
