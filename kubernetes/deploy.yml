@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mortgage-calculator
@@ -6,6 +6,9 @@ metadata:
     app: mortgage-calculator
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: mortgage-calculator
   template:
     metadata:
       labels:
