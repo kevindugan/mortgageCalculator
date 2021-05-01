@@ -40,11 +40,23 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - uses: actions/checkout@v2
       - name: Setup Kubctl
         uses: matootie/dokube@v1.3.4
         with:
           personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
           clusterName: k8s-1-20-2-do-0-nyc3-1619893371139
+
+      - name: Login to DigitalOcean registry
+        uses: docker/login-action@v1
+        with:
+          registry: registry.digitalocean.com
+          username: ${{ secrets.DO_REGISTRY_TOKEN }}
+          password: ${{ secrets.DO_REGISTRY_TOKEN }}
+
+      - name: Build Node Image
+        run: docker build . --tag registry.digitalocean.com/dugan-docker-registry/mortgage-calculator-image:latest &&
+             docker push --all-tags registry.digitalocean.com/dugan-docker-registry/mortgage-calculator-image
       
       - name: Deploy To DigitalOcean
         run: kubectl get nodes
