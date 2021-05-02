@@ -59,4 +59,5 @@ jobs:
              docker push --all-tags registry.digitalocean.com/dugan-docker-registry/mortgage-calculator-image
       
       - name: Deploy To DigitalOcean
-        run: kubectl create -f kubernetes/deploy.yml
+        run: kubectl delete all -l app=mortgage-calculator &&
+             kubectl create -f kubernetes/deploy.yml

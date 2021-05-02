@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mortgage-calculator-Service
+  name: mortgage-calculator-service
   labels:
     app: mortgage-calculator
 spec:
@@ -34,4 +34,4 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 3000
-      nodePort: 8080
+      nodePort: 31234
