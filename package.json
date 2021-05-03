@@ -1,0 +1,45 @@
+{
+  "name": "mortgage-calculator",
+  "version": "1.0.0",
+  "description": "Calculate Mortgage payment with option to add principle payments",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "jest --silent --verbose",
+    "test:coverage": "npm run test -- --coverage"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "lib/**/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "function": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kevindugan/mortgageCalculator.git"
+  },
+  "keywords": [
+    "mortgage",
+    "principle",
+    "payment"
+  ],
+  "author": "Kevin J. Dugan",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/kevindugan/mortgageCalculator/issues"
+  },
+  "homepage": "https://github.com/kevindugan/mortgageCalculator#readme",
+  "dependencies": {
+    "@hapi/hapi": "^20.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0"
+  }
+}
